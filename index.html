@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>SuperPlayer</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" href="assets/demo/demo.css">
+  <link rel="stylesheet" href="assets/superplayer.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="assets/superplayer.min.js"></script>
+</head>
+<body>
+  <h1>basic usage</h1>
+  <p>Using SuperPlayer is very easy. To use SuperPlayer, you need to include jQuery, <em>superplayer.js</em>/<em>superplayer.min.js</em>, and <em>superplayer.css</em>/<em>superplayer.min.css</em></p>
+  <textarea>&lt;script src="https://code.jquery.com/jquery-1.11.0.min.js"&gt;</script>
+&lt;script src="assets/superplayer.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="assets/superplayer.css"&gt;</textarea>
+  <p><em>Or</em></p>
+  <textarea>&lt;script src="https://code.jquery.com/jquery-1.11.0.min.js"&gt;</script>
+&lt;script src="assets/superplayer.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="assets/superplayer.min.css"&gt;</textarea>
+  <p>Do not use both <em>superplayer.js</em> and <em>superplayer.min.js</em> - Only use one.</p>
+  <p>Do not use both <em>superplayer.css</em> and <em>superplayer.min.css</em> - Only use one.</p>
+  <h1>examples</h1>
+  <h2>single-song demo</h2>
+  <div id="singledemo"></div>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  items: [
+    {
+      src: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+      title: '<b>Mules</b> - "Teenage Freakout"'
+    }
+  ]
+});</textarea>
+  <p>In this example, the item does not have an image, so the default image is used instead.</p>
+  <hr />
+  <h2>multi-song demo</h2>
+  <div id="multidemo"></div>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  items: [
+    {
+       src: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+      image: 'assets/demo/fma.png',
+      title: '<b>Mules</b> - "Teenage Freakout"',
+      download: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+      loop: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3'
+    },
+    {
+      src: 'assets/demo/Mules_-_01_-_Shock_ya.mp3',
+      image: 'assets/demo/mules.jpg',
+      title: '<b>Mules</b> - "Shock Ya"'
+    }
+  ]
+});</textarea>
+  <p>In this example, the first item has the "loop" variable set to true, meaning it will loop by default. The user can turn loop on/off for any item.</p>
+  <p>In this example, the first item has the "download" variable set, meaning a download button will be shown which will go to a download/purchase page for the audio file.</p>
+  <hr />
+  <h2>header demo</h2>
+  <div id="headerdemo"></div>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  header: {
+    text: 'My Music Player',
+    image: 'assets/demo/meatar.png'
+  },
+  items: [
+    {
+      src: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+      image: 'assets/demo/fma.png',
+      title: '<b>Mules</b> - "Teenage Freakout"',
+    }
+  ]
+});</textarea>
+  <p>In the example, the SuperPlayer has a header. To add a header, just add the "header" variable, with the variables "text" and "image" (image is optional).</p>
+  <h1>usage</h1>
+  <ol>
+    <li>Create a host element in which the SuperPlayer will be held (example: '<span style="color:blue;">&lt;div</span> <span style="color:red;">id</span>=<span style="color:purple;">&quot;musicplayer&quot;</span><span style="color:blue;">&gt;&lt;/div&gt;</span>')
+    <li>Call SuperPlayer via JavaScript with the audio items attached (it is recommend that this is done so after the page has loaded)
+	  <dt>To call SuperPlayer, you do so using this JavaScript code:</dt>
+	</li>
+  </ol>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  header: {
+    text: 'My Music Player',
+	image: 'image.png' // optional
+  }, // optional
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png', // optional
+      src: 'song.mp3',
+	  loop: true // optional
+    }
+	...
+  ]
+});</textarea>
+  <ul>
+    <dt>You'll need to set the variable to the appropriate values.</dt>
+    <ol style="list-style-type:lower-alpha;">
+      <li>Set the "title" variable to the title of the song you wish to be displayed. (required)</li>
+	  <li>Set the "image" variable to the song cover image you wish to be displayed. (optional)</li>
+	  <li>Set the "src" variable to the URL to the music file you wish to have played. (required)</li>
+    </ol>
+  </ul>
+  <ol start="3">
+    <li>You can add as many items as you wish, just add more arrays to the "items" array. Here's an example of a player with 3 songs:</li>
+  </ol>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3'
+    },
+    {
+      title: 'Song 2',
+      image: 'SONG2.png',
+      src: 'song2.mp3'
+    },
+    {
+      title: 'Song 3',
+      image: 'SONG3.png',
+      src: 'song3.mp3'
+    }
+  ]
+});</textarea>
+  <h1>extras</h1>
+  <h2>volume</h2>
+  <ul>
+    <li>You can add a "volume" variable to the SuperPlayer function to set the default volume for the SuperPlayer.</li>
+	<dt>Here's an example where the audio will be played at 50% volume:</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  volume: 50,
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3'
+    }
+  ]
+});</textarea>
+  <h2>auto play</h2>
+  <ul>
+    <li>You can add the "autoplay" variable to the SuperPlayer function to make it automatically start playing the first item.</li>
+	<dt>Here's an example where the SuperPlayer will automatically start playing:</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  autoplay: true,
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3'
+    }
+  ]
+});</textarea>
+  <h2>header</h2>
+  <ul>
+    <li>You can add the "loop" variable to an item to set it to loop by default. The user can turn loop on/off for any song.</li>
+	<li>Your header can have an image also. The "image" variable is not required and no image will display if not set.</li>
+	<dt>Here's an example of a SuperPlayer with a header:</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  header: {
+    text: 'My Music Player',
+    image: 'image.png'
+  },
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3'
+    }
+  ]
+});</textarea>
+  <h2>loop</h2>
+  <ul>
+    <li>You can add the "loop" variable to an item to set it to loop by default. The user can turn loop on/off for any song.</li>
+	<dt>Here's an example where the first song will loop by default, and not the second:</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3',
+      loop: true
+    },
+    {
+      title: 'Song 2',
+      image: 'SONG2.png',
+      src: 'song2.mp3'
+    }
+  ]
+});</textarea>
+  <h2>download button</h2>
+  <ul>
+    <li>You can add the "download" variable to an item to put a download button on the player for this item.</li>
+	<dt>Here's an example where the first song will show a download button with a spacific, and not the second:</dt>
+	<dt>The download link may be set to any link, not just the URL of the audio.</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3',
+      download: 'song.mp3'
+    },
+    {
+      title: 'Song 2',
+      image: 'SONG2.png',
+      src: 'song2.mp3'
+    }
+  ]
+});</textarea>
+  <h2>hidden controls</h2>
+  <ul>
+    <li>You hide the audio controls by adding the "hidecontrols" variable to the SuperPlayer.</li>
+	<dt>Here's an example of a SuperPlayer that will not have audio controls:</dt>
+  </ul>
+  <textarea readonly>$( -- host element selector -- ).superplayer({
+  hidecontrols: true,
+  items: [
+    {
+      title: 'Song 1',
+      image: 'SONG1.png',
+      src: 'song.mp3',
+    }
+  ]
+});</textarea>
+</body>
+<script>
+  $('textarea').click(function(){
+      $(this).select();
+  });
+  $('#singledemo').superplayer({
+    items: [
+      {
+        src: [
+          {
+            link: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+            type: 'audio/mp3'
+          }
+        ],
+        title: '<b>Mules</b> - "Teenage Freakout"'
+      }
+    ]
+  });
+  $('#multidemo').superplayer({
+    items: [
+      {
+        src: [
+          {
+            link: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+            type: 'audio/mp3'
+          }
+        ],
+        image: 'assets/demo/fma.png',
+        title: '<b>Mules</b> - "Teenage Freakout"',
+        download: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+        loop: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3'
+      },
+      {
+        src: [
+          {
+            link: 'assets/demo/Mules_-_01_-_Shock_ya.mp3',
+            type: 'audio/mp3'
+          }
+        ],
+        image: 'assets/demo/mules.jpg',
+        title: '<b>Mules</b> - "Shock Ya"'
+      }
+    ]
+  });
+  $('#headerdemo').superplayer({
+    header: {
+      text: 'My Music Player',
+      image: 'assets/demo/meatar.png'
+    },
+    items: [
+      {
+        src: [
+          {
+            link: 'assets/demo/Mules_-_02_-_Teenage_Freakout.mp3',
+            type: 'audio/mp3'
+          }
+        ],
+        image: 'assets/demo/fma.png',
+        title: '<b>Mules</b> - "Teenage Freakout"',
+      }
+    ]
+  });
+</script>
+</html>
